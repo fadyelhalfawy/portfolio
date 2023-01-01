@@ -1,54 +1,62 @@
-import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { HashLink } from 'react-router-hash-link';
-import {
-    BrowserRouter as Router
-} from "react-router-dom";
+import React, {useState} from "react";
+import {FaBars, FaTimes} from "react-icons/fa"
+
 
 export const NavBar = () => {
 
-    const [activeLink, setActiveLink] = useState('home');
-    const [scrolled, setScrolled] = useState(false);
+    const [nav, setNav] = useState(false);
 
-    useEffect(() => {
-        const onScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        }
-
-        window.addEventListener("scroll", onScroll);
-
-        return () => window.removeEventListener("scroll", onScroll);
-    }, [])
-
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value);
-    }
+    const links = [
+        {
+            id: 1,
+            link: 'home'
+        },
+        {
+            id: 2,
+            link: 'about'
+        },
+        {
+            id: 3,
+            link: 'portfolio'
+        },
+        {
+            id: 4,
+            link: 'experience'
+        },
+        {
+            id: 5,
+            link: 'contact'
+        },
+    ]
 
     return (
-        <Router>
-            <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-                <Container>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav">
-                        <span className="navbar-toggler-icon"></span>
-                    </Navbar.Toggle>
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto">
-                            <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-                            <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-                            <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-                        </Nav>
-                        <span className="navbar-text">
-              <HashLink to='#connect'>
-                <button className="vvd"><span>Let’s Connect</span></button>
-              </HashLink>
-            </span>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </Router>
+        <div className="flex justify-between items-center w-full h-20 px-4 bg-black text-white fixed">
+            <div>
+                <h1 className="text-5xl font-signature ml-2">Fady ElHalfawy</h1>
+            </div>
+
+            <ul className={"hidden md:flex"}>
+                {
+                   links.map(({id, link}) => (
+                       <li key={id} className={"px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200"}>
+                           {link}
+                       </li>
+                   ))}
+            </ul>
+
+            <div onClick={() => setNav(!nav)} className={"cursor-pointer pr-4 z-10 text-gray-500"}>
+                {nav ? <FaTimes size={30}/> : <FaBars size={30} /> }
+            </div>
+
+            {nav &&
+                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+                    {links.map(({ id, link }) => (
+                        <li key={id} className={"px-4 cursor-pointer capitalize py-6 text-4xl"}>
+                            {link}
+                        </li>
+                    ))}
+                </ul>
+            }
+        </div>
     )
 }
