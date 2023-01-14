@@ -1,41 +1,47 @@
 import React from "react";
-import arrayDestruct from "../assets/portfolio/arrayDestruct.jpg";
-import installNode from "../assets/portfolio/installNode.jpg";
-import navbar from "../assets/portfolio/navbar.jpg";
-import reactParallax from "../assets/portfolio/reactParallax.jpg";
-import reactSmooth from "../assets/portfolio/reactSmooth.jpg";
-import reactWeather from "../assets/portfolio/reactWeather.jpg";
+import MoviesWebsite from "../assets/portfolio/MoviesWebsite.png";
+import Reviews from "../assets/portfolio/Review.jpeg";
+import orderFood from "../assets/portfolio/OrderFood.jpg";
+import UpdateTweeter from "../assets/portfolio/Gameball.jpg";
+import DisplayTours from "../assets/portfolio/DisplayTours.jpg";
+import PortfolioProject from "../assets/portfolio/Portfolio.jpg";
 export const Portfolio = () => {
 
     const portfolios = [
         {
             id: 1,
-            src: arrayDestruct,
+            src: MoviesWebsite,
+            name: "Movies-website",
             link: "https://github.com/fadyelhalfawy/movies-website"
         },
         {
             id: 2,
-            src: installNode,
+            src: Reviews,
+            name: "Reviews",
             link: "https://github.com/fadyelhalfawy/reviews"
         },
         {
             id: 3,
-            src: navbar,
+            src: orderFood,
+            name: "Order-food",
             link: "https://github.com/fadyelhalfawy/order-food"
         },
         {
             id: 4,
-            src: reactParallax,
+            src: UpdateTweeter,
+            name: "Update-tweeter",
             link: "https://github.com/fadyelhalfawy/gameball"
         },
         {
             id: 5,
-            src: reactSmooth,
+            src: DisplayTours,
+            name: "Display-tours",
             link: "https://github.com/fadyelhalfawy/display-tours"
         },
         {
             id: 6,
-            src: reactWeather,
+            src: PortfolioProject,
+            name: "Portfolio",
             link: "https://github.com/fadyelhalfawy/portfolio"
         },
     ]
@@ -54,13 +60,13 @@ export const Portfolio = () => {
 
                 <div className={"grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0"}>
                 {
-                    portfolios.map(({id, src, link}) => (
+                    portfolios.map(({id, src, name, link}) => (
 
                             <div key={id} className={"shadow-md shadow-gray-600 rounded-lg"}>
                                 <img src={src} alt={src} className={"rounded-md duration-200 hover:scale-105"} />
                                 <div className={"flex items-center justify-center"}>
                                     <button className={"w-1/2 px-6 py-3 m-4 cursor-auto"}>
-                                        Name of project
+                                        {name}
                                     </button>
                                     <button className="disabled px-6 py-3 w-1/2 m-4 duration-200 hover:scale-105">
                                         <a href={link} target={'_blank'} rel="noreferrer">Code Link</a>
