@@ -1,6 +1,7 @@
 import React from "react";
 import HeroImage from "../assets/HeroImage - Copy.png";
 import {BsArrowRightCircleFill} from "react-icons/bs"
+import {Link} from "react-scroll";
 
 export const Home = () => {
 
@@ -20,12 +21,12 @@ export const Home = () => {
                         concept and participate in latest technologies.
                     </p>
                     <div>
-                        <button className={"group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer"}>
+                        <Link to={"Portfolio"} smooth duration={500} className={"group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer"}>
                             Portfolio
                             <span className={"group-hover:rotate-90 duration-300"}>
                                 <BsArrowRightCircleFill className={"ml-1"} size={20}/>
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div>
