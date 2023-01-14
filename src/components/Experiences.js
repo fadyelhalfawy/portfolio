@@ -8,7 +8,8 @@ import nextjs from "../assets/nextjs.png";
 import graphql from "../assets/graphql.png";
 import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
-export const Experience = () => {
+export const Experiences = () => {
+
     const experience = [
         {
             id: 1,
